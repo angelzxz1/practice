@@ -12,12 +12,14 @@ datasource db {
 }
 
 model User {
-    id          Int    @id @default(autoincrement())
+    id          String @unique @id
     firstName   String
     lastName    String
     phoneNumber String
     email       String @unique
     password    String
+
+    @@index([id])
 }
 
 model Purchase {
@@ -25,7 +27,7 @@ model Purchase {
     amount Float
     date   DateTime @default(now())
     time   String?
-    userId Int
+    userId String
 
     @@index([userId])
 }

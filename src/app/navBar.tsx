@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignOutButton } from '@clerk/nextjs'
+import { SignOutButton, SignInButton, useUser } from '@clerk/nextjs'
 
 interface NavLinkProps {
 	href: string
@@ -9,6 +9,7 @@ interface NavLinkProps {
 }
 const NavLink = ({ href, children }: NavLinkProps) => {
 	const path = usePathname()
+
 	return (
 		<Link
 			href={href}
@@ -44,13 +45,17 @@ const NavBar = () => {
 		{ href: '/about', label: 'About' },
 		{ href: '/contactus', label: 'Contact us' },
 	]
+	const NoAuthLinks = [
+		{ href: '/about', label: 'About' },
+		{ href: '/contactus', label: 'Contact us' },
+	]
 	const path = usePathname()
-	if (path === '/login' || path === '/register') {
-		return <></>
-	} else {
-		return (
-			<div
-				className="
+	const { user, isLoaded, isSignedIn } = useUser()
+	if (isLoaded) {
+		if (!isSignedIn) {
+			return (
+				<div
+					className="
 				fixed
                 z-50
 				flex
@@ -60,22 +65,54 @@ const NavBar = () => {
 				backdrop-blur-lg
 				
 			"
-			>
-				<div className="flex w-1/5 items-center justify-center">
-					Logo
+				>
+					<div className="flex w-1/5 items-center justify-center">
+						Logo
+					</div>
+					<div className="flex w-1/2  justify-start">
+						{NoAuthLinks.map(({ href, label }) => (
+							<NavLink key={label} href={href}>
+								{label}
+							</NavLink>
+						))}
+					</div>
+					<div className="flex w-1/5 items-center justify-center">
+						<SignInButton>Log in</SignInButton>
+					</div>
 				</div>
-				<div className="flex w-1/2  justify-start">
-					{Links.map(({ href, label }) => (
-						<NavLink key={label} href={href}>
-							{label}
-						</NavLink>
-					))}
+			)
+		} else {
+			return (
+				<div
+					className="
+				fixed
+                z-50
+				flex
+				w-full
+                bg-[#42339C19]
+                p-4
+				backdrop-blur-lg
+				
+			"
+				>
+					<div className="flex w-1/5 items-center justify-center">
+						Logo
+					</div>
+					<div className="flex w-1/2  justify-start">
+						{Links.map(({ href, label }) => (
+							<NavLink key={label} href={href}>
+								{label}
+							</NavLink>
+						))}
+					</div>
+					<div className="flex w-1/5 items-center justify-center">
+						<SignOutButton>Log out</SignOutButton>
+					</div>
 				</div>
-				<div className="flex w-1/5 items-center justify-center">
-					<SignOutButton>Log out</SignOutButton>
-				</div>
-			</div>
-		)
+			)
+		}
+	} else {
+		return <div>Loading...</div>
 	}
 }
 
