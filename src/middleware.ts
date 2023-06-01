@@ -1,8 +1,19 @@
 import { authMiddleware } from '@clerk/nextjs'
+import { NextResponse } from 'next/server'
 
 export default authMiddleware({
 	
-	publicRoutes: ['/', '/sign-in', '/testing', '/userProfile', '/about' , 'contactus'],
+	publicRoutes: ['/', '/login', '/testing', '/userProfile', '/about' , '/contactus'],
+	beforeAuth(req, evt) {
+		
+	},
+	afterAuth(auth, req, evt) {
+		if (!auth.userId && !auth.isPublicRoute){
+			const signInUrl = new URL('/testing', req.url)
+			signInUrl.searchParams.set('redirect_url', req.url)
+			return NextResponse.redirect(signInUrl)
+		}
+	},
 })
 
 export const config = {

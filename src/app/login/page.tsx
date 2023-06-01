@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import Aside from '../../components/aside'
+import Aside from 'finnaz/components/aside'
 // import { useRouter, usePathname } from 'next/navigation'
 
 type InputProps = {
