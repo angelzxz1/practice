@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignOutButton, SignInButton, useUser } from '@clerk/nextjs'
+import { SignOutButton, useUser } from '@clerk/nextjs'
 
 interface NavLinkProps {
 	href: string
@@ -77,7 +77,7 @@ const NavBar = () => {
 						))}
 					</div>
 					<div className="flex w-1/5 items-center justify-center">
-						<SignInButton>Log in</SignInButton>
+						<Link href='/login'>Log in</Link>
 					</div>
 				</div>
 			)

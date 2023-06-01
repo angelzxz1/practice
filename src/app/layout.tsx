@@ -19,13 +19,14 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html lang="en">
 				<body
-					className={`${inter.className} min-h-screen bg-gradient-to-br from-[#1D0E29] to-black text-white`}
+					className={`${inter.className} bg-gradient-to-br from-[#1D0E29] to-black text-white`}
 				>
 					<NavBar />
-					<div className="flex w-full justify-center">
-						<div className="mt-[3.6rem] w-full">{children} </div>
+					<div className="flex w-full justify-center relative" >
+						<div className="pt-[3.6rem] w-full min-h-screen items-center" >{children} </div>
+						<Footer />
 					</div>
-					<Footer />
+					
 				</body>
 			</html>
 		</ClerkProvider>

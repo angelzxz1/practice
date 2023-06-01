@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Aside from 'finnaz/components/aside'
-// import { useRouter, usePathname } from 'next/navigation'
+import { SignIn } from '@clerk/nextjs'
 
 type InputProps = {
 	label: string
@@ -88,7 +88,7 @@ const Form = () => {
 
 const Page = () => {
 	return (
-		<section className="w-screen h-screen flex justify-center items-center">
+		<section className="w-full h-full flex justify-center items-center">
 			<main className="main-log-reg">
 				<Aside />
 				<Form />
