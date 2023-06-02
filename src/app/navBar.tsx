@@ -49,8 +49,7 @@ const NavBar = () => {
 		{ href: '/about', label: 'About' },
 		{ href: '/contactus', label: 'Contact us' },
 	]
-	const path = usePathname()
-	const { user, isLoaded, isSignedIn } = useUser()
+	const { isLoaded, isSignedIn } = useUser()
 	if (isLoaded) {
 		if (!isSignedIn) {
 			return (

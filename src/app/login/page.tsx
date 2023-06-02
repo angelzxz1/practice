@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Aside from 'finnaz/components/aside'
-import { SignIn } from '@clerk/nextjs'
+// import { SignIn } from '@clerk/nextjs'
 
 type InputProps = {
 	label: string

@@ -3,7 +3,7 @@ import { useUser } from '@clerk/nextjs'
 import React from 'react'
 
 const Page = () => {
-	const {isLoaded, user, isSignedIn} = useUser()
+	const {isLoaded, user} = useUser()
     const {id} = user?user:{id:""}
     if(isLoaded){
         return <main className="flex w-full items-center justify-center">{id?id:'No id found'}</main>

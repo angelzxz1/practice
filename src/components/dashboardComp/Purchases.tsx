@@ -9,11 +9,11 @@ interface purchaseI {
 }
 
 const StatusTag = ({ state }: { state: string }): JSX.Element => {
-	interface statusColorI {
-		paid: string
-		declined: string
-		pending: string
-	}
+	// interface statusColorI {
+	// 	paid: string
+	// 	declined: string
+	// 	pending: string
+	// }
 
 	return (
 		<div
