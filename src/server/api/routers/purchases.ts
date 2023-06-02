@@ -36,7 +36,13 @@ export const purchasesRouter = createTRPCRouter({
 			}),
 		)
 		.query(async ({ ctx, input }) => {
-			const purchase = await ctx.prisma.purchase.create({ data: input })
+			const {amount,date,time,userId}=input
+			const purchase = await ctx.prisma.purchase.create({ data:{
+				amount:amount,
+				userId:userId.toString(),
+				date:date,
+				time:time
+			}})
 			return purchase
 		}),
 	create: publicProcedure
@@ -49,7 +55,13 @@ export const purchasesRouter = createTRPCRouter({
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
-			const purchase = await ctx.prisma.purchase.create({ data: input })
+			const {amount,date,time,userId}=input
+			const purchase = await ctx.prisma.purchase.create({ data:{
+				amount:amount,
+				userId:userId.toString(),
+				date:date,
+				time:time
+			}})
 			return purchase
 		}),
 })

@@ -8,7 +8,7 @@ export const usersRouter = createTRPCRouter({
 	getOne: publicProcedure.input(z.string()).query(async opts => {
 		const { ctx, input } = opts
 		const user = await ctx.prisma.user.findUnique({
-			where: { id: parseInt(input) },
+			where: { id: input },
 		})
 		if (!user) {
 			return 'No user found'
