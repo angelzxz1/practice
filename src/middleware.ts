@@ -4,9 +4,9 @@ import { NextResponse } from 'next/server'
 export default authMiddleware({
 	
 	publicRoutes: ['/', '/login', '/testing', '/userProfile', '/about' , '/contactus'],
-	beforeAuth(req, evt) {
+	// beforeAuth(req, evt) {
 		
-	},
+	// },
 	afterAuth(auth, req, evt) {
 		if (!auth.userId && !auth.isPublicRoute){
 			const signInUrl = new URL('/testing', req.url)
