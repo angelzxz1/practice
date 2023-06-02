@@ -31,6 +31,7 @@ const NavLink = ({ href, children }: NavLinkProps) => {
                 after:duration-150
                 after:ease-in-out
             `}
+			prefetch={false}
 		>
 			{children}
 		</Link>
