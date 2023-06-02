@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { createTRPCRouter, publicProcedure } from 'finnaz/server/api/trpc'
-import { Prisma } from '@prisma/client'
+// import { Prisma } from '@prisma/client'
 
 export const purchasesRouter = createTRPCRouter({
 	getAll: publicProcedure.query(({ ctx }) => {
